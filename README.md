@@ -8,5 +8,5 @@
    - You can run `ng serve` at `/app_public` to see current progress, port is 
    `http://localhost:4200`.
    - To see the progress on main directory, you need to first run `ng build -prod -op build
-` at `/app_public`, then `nodemon` or `npm start` at main directory
-   - 
+` at `/app_public`, then `nodemon` or `npm start` at main directory, port is `http://localhost:3000`.
+   - ...
