@@ -70,7 +70,7 @@ const modifyEvent = function (req, res) {
   }
 
   Eve.findById(req.params.eventid)
-      .select('-organizer -participants -createTime')
+      .select('-organizer -createTime')
       .exec((err, event) => {
         if (!event) {
           res.status(404)
@@ -84,8 +84,14 @@ const modifyEvent = function (req, res) {
           return;
         }
 
-        event.eventTime = req.body.eventTime;
-        event.intro = req.body.intro;
+        // modify event by organizer: can change event time and/or intro
+        // by participant: join the event
+        if (req.body.user.email===event.organizer.email) {
+          event.eventTime = req.body.eventTime;
+          event.intro = req.body.intro;
+        } else {
+          event.participants.push(req.body.user);
+        }
 
         event.save((err, event) => {
           if (err) {
