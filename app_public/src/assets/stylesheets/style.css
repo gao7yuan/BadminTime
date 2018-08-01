@@ -1,17 +1,25 @@
-@import url("//fonts.googleapis.com/css?family=Lobster|Cabin:400,700");
+@import url("//fonts.googleapis.com/css?family=Muli");
 
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lobster', cursive;
+    font-family: 'Muli', sans-serif;
 }
 
 .navbar {
-    background-color: #ad1d28;
-    border-color: #911821;
+    background-color: #ffffff;
+    border-color: #ffffff;    
+    z-index: 3;
 }
 
+
+
 .navbar-brand {
-    font-family: 'Lobster', cursive;
+    font-family: 'Muli', sans-serif;
+    color: #000000;
+}
+
+a.nav-link {
+    color: #000000;
 }
 
 .card {
@@ -38,24 +46,24 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0.5em;
 }
 
-
+/*
 .badge-default, .btn-primary {
     background-color: #ad1d28;
     border-color: #911821;
 }
-
+*/
 h4 a, h4 a:hover {
-    color: #fff;
+    color: #484848;
 }
 
 h4 small {
     font-size: 60%;
     line-height: 200%;
-    color: #aaa;
+    color: #484848;
 }
 
 h1 small {
-    color: #aaa;
+    color: #484848;
 }
 
 .address {
@@ -70,12 +78,54 @@ p {
     margin-bottom: 0.65rem;
 }
 
+.slogan-container:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url('../../assets/images/badminton_wall.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.5;
+}
+
+.slogan-content {
+    position: relative;
+    margin: 15%;
+}
+
+p.slogan {
+    text-align: center;
+    font-size: 2rem;
+    z-index: 3;
+}
+
+
 legend {
-    font-family: 'Lobster', cursive;
+    font-family: 'Muli', sans-serif;
 }
 
 body {
     font-family: "Cabin", Arial, sans-serif;
-    color: #ffffff;
-    background-color: #108a93;
+    color: #484848;
+    background-color: #ffffff;
+}
+
+.form-login {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+
+
+button {
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
 }
