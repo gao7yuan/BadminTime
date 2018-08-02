@@ -12,10 +12,17 @@
    - ...
 
 ## Iteration 1.0
+### Angular:
 * Created necessary Angular components
 * Built static webpages.
 * Enabled basic routing.
+* Next:
+  - fix collapse nav problem.
+  - make create event form and sign up form
+  - enable talking to API.
 
-![iter1](/app_log_images/iter1_homepage.png)
-![iter1](/app_log_images/iter1_loginpage.png)
-![iter1](/app_log_images/iter1_registerpage.png)
+![iter1](/app_log_images/iter1-home.png)
+![iter1](/app_log_images/iter1-explore.png)
+![iter1](/app_log_images/iter1-eventdetail.png)
+![iter1](/app_log_images/iter1-login.png)
+![iter1](/app_log_images/iter1-register.png)
