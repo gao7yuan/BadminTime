@@ -15,6 +15,11 @@ import { HeaderComponent } from './header/header.component';
 import { EventsPageComponent } from './events-page/events-page.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { CreateEventComponent } from './create-event/create-event.component';
+import { CreateEventPageComponent } from './create-event-page/create-event-page.component';
+import { MyEventsPageComponent } from './my-events-page/my-events-page.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
+import { MyEventsComponent } from './my-events/my-events.component';
 
 
 @NgModule({
@@ -30,7 +35,12 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     HeaderComponent,
     EventsPageComponent,
     RegisterComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    CreateEventComponent,
+    CreateEventPageComponent,
+    MyEventsPageComponent,
+    SignupFormComponent,
+    MyEventsComponent
   ],
   imports: [
     BrowserModule,

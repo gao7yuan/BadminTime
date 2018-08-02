@@ -1,3 +1,17 @@
-<p>
-  event-details works!
-</p>
+<div class="content page-content">
+  <p class="address">Address: 3616 South Road, Building D, Mukilteo, WA 98275</p>
+  <p class="event-time">Event time: Aug 1, 2018 7:30pm to 10:00pm</p>
+  <p class="num-participants">Currently 6 participants</p>
+</div>
+<div class="content">
+  <div class="signup-button">
+    <button type="button" (click)="signupFormVisible=true" class="btn btn-primary float-right">
+      Sign up
+    </button>
+  </div>
+  <!-- signup form -->
+  <div *ngIf="formVisible">
+  </div>
+</div>
+
+

@@ -9,6 +9,8 @@ export class FrameworkComponent implements OnInit {
 
   constructor() { }
 
+  public isLoggedIn: boolean = true;
+
   ngOnInit() {
   }
 

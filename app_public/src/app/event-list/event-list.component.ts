@@ -9,6 +9,8 @@ export class EventListComponent implements OnInit {
 
   constructor() { }
 
+  events: [Event];
+
   ngOnInit() {
   }
 
