@@ -1,5 +1,24 @@
 const mongoose = require('mongoose');
-require('./users');
+
+const userSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  firstName: {
+    type: String,
+    require: true
+  },
+  lastName : {
+    type: String,
+    required: true
+  }
+});
 
 const eventSchema = new mongoose.Schema({
   organizer: {
