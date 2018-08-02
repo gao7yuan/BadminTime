@@ -153,3 +153,8 @@ button {
 .content {
     display: block;
 }
+
+.logo-img {
+    position: relative;
+    z-index: 0;
+}
