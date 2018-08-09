@@ -27,10 +27,6 @@
                   <label for="inputTime">Start Time</label>
                   <input type="time" class="form-control" id="inputTime">
                 </div>
-                <div class="form-group time-form">
-                  <label for="inputTime">End Time</label>
-                  <input type="time" class="form-control" id="inputTime">
-                </div>
           </div>
         
           <div class="form-group address-form">
@@ -43,11 +39,25 @@
   </div>
 </div>
 <!-- <div class="card" *ngFor="let event of events"> -->
-<div class="card">  
+<div class="card" *ngFor="let event of events">
+  <div class="card-block">
+    <h4>
+      <a>{{event.organizer.username}}'s Event</a>
+      <!-- <a routerLink="/eventId">Yuan's Event</a> -->
+    </h4>
+   <p class="address">Address: {{event.address}}</p>
+    <p class="event-time">Event time: {{event.eventDate}}</p>
+    <p class="num-participants">Currently {{event.participants.length}} participant(s)</p> 
+<!--     <p class="address">Address: 3616 South Road, Building D, Mukilteo, WA 98275</p>
+    <p class="event-time">Event time: Aug 1, 2018 7:30pm to 10:00pm</p>
+    <p class="num-participants">Currently 6 participants</p> -->
+  </div>
+</div>
+<div class="card">
   <div class="card-block">
     <h4>
       <!-- <a routerLink="event/{{event._id}}">{{event.organizer.firstName}}'s Event</a> -->
-      <a routerLink="/eventId">Yuan's Event</a>
+      <a routerLink="/eventId">Meow's Event</a>
     </h4>
     <!-- <p class="address">Address: {{event.address}}</p> -->
     <!-- <p class="event-time">Event time: {{event.eventTime.date}} {{event.eventTime.startTime}} to {{event.eventTime.endTime}}</p> -->
@@ -56,18 +66,4 @@
     <p class="event-time">Event time: Aug 1, 2018 7:30pm to 10:00pm</p>
     <p class="num-participants">Currently 6 participants</p>
   </div>
-</div>
-<div class="card">
-    <div class="card-block">
-        <h4>
-          <!-- <a routerLink="event/{{event._id}}">{{event.organizer.firstName}}'s Event</a> -->
-          <a>Shroud's Event</a>
-        </h4>
-        <!-- <p class="address">Address: {{event.address}}</p> -->
-        <!-- <p class="event-time">Event time: {{event.eventTime.date}} {{event.eventTime.startTime}} to {{event.eventTime.endTime}}</p> -->
-        <!-- <p class="num-participants">Currently {{event.participants.length}} participants</p> -->
-        <p class="address">Address: 221B Baker Street</p>
-        <p class="event-time">Event time: Aug 9, 2018 7:30pm to 10:00pm</p>
-        <p class="num-participants">Currently 2 participants</p>
-      </div>
 </div>
