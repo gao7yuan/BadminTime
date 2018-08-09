@@ -142,12 +142,67 @@ body {
     display: block;
 }
 
+.create-event-button {
+    max-width: 100px;
+    display: block;
+    position: relative;
+    z-index: 3;
+}
+
+
+
 button {
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 100%;
+}
+
+/* create event form */
+
+#submit-btn, #cancel-btn {
+    display: inline-block;
+    max-width: 100px;
+    margin-right: 20px;
+}
+
+.create-event-form {
+    display: block;
+}
+
+.user-info {
+    display: block;
+}
+
+.username-form {
+    display: inline-block;
+    max-width: 100px;
+    margin-right: 20px;
+}
+
+.email-form {
+    display: inline-block;
+    max-width: 300px;
+}
+
+.event-time {
+    display: block;
+}
+
+.date-form, .time-form {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.address-form {
+    max-width: 800px;
+}
+
+.create-event-form {
+    margin-left: 25px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .content {

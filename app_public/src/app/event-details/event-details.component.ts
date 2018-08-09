@@ -9,6 +9,8 @@ export class EventDetailsComponent implements OnInit {
 
   constructor() { }
 
+  public signupFormVisible: boolean = false;
+
   ngOnInit() {
   }
 
