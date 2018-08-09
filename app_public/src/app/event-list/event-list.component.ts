@@ -9,6 +9,8 @@ export class EventListComponent implements OnInit {
 
   constructor() { }
 
+  public createFormVisible: boolean = false;
+
   events: [Event];
 
   ngOnInit() {
