@@ -11,6 +11,15 @@
 ` at `/app_public`, then `nodemon` or `npm start` at main directory, port is `http://localhost:3000`.
    - ...
 
+## Iteration 2.0
+### Angular:
+* Added create-event form in events component and signup form in event-details component.
+* Enabled change of visibility of these forms by clicking corresponding buttons.
+
+![iter2](/app_log_images/iter2-neweventbtn.png)
+![iter2](/app_log_images/iter2-createeventform.png)
+![iter2](/app_log_images/iter2-signupform.png)
+
 ## Iteration 1.0
 ### Angular:
 * Created necessary Angular components
