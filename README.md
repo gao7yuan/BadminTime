@@ -11,10 +11,15 @@
 ` at `/app_public`, then `nodemon` or `npm start` at main directory, port is `http://localhost:3000`.
    - ...
 
+ - To Jeffrey:
+   - created one event in my local db and tried getEventList method via ``` http://localhost:3000/api/events.``` - did not work
+   - failed to push data from local db to mlab b/c ```heroku addons:open mongolab``` and ```heroku config:get MONGODB_URI``` don't seem to work on my end... (I can log into mlab but can't get uri somehow.)
+
 ## Iteration 2.0
 ### Angular:
 * Added create-event form in events component and signup form in event-details component.
 * Enabled change of visibility of these forms by clicking corresponding buttons.
+* Moved hard-coded data in event list into event-list.component.ts and enabled binding between fake data and html.
 
 ![iter2](/app_log_images/iter2-neweventbtn.png)
 ![iter2](/app_log_images/iter2-createeventform.png)
