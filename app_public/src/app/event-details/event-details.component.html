@@ -1,7 +1,10 @@
 <div class="content page-content">
-  <p class="address">Address: 3616 South Road, Building D, Mukilteo, WA 98275</p>
-  <p class="event-time">Event time: Aug 1, 2018 7:30pm to 10:00pm</p>
-  <p class="num-participants">Currently 6 participants</p>
+  <h4>
+    {{event.organizer.userName}}'s Event
+  </h4>
+  <p class="address">Address: {{event.address}}</p>
+  <p class="event-time">Event time: {{event.eventDate}}</p>
+  <p class="num-participants">Currently {{event.participants.length}} participant(s)</p> 
 </div>
 <div class="content">
   <div class="signup-button">

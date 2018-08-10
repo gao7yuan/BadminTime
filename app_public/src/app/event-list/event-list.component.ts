@@ -15,7 +15,8 @@ export class EventListComponent implements OnInit {
 
   public createFormVisible: boolean = false;
 
-  events: Event[] = [
+  events: Event[];
+  /*= [
     {
       _id: "1111",
       organizer: {
@@ -53,7 +54,7 @@ export class EventListComponent implements OnInit {
       intro: "welcome"
     }
   ]
-
+*/
   formError: string;
 
   public newEvent: Event = {
@@ -107,7 +108,7 @@ export class EventListComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.getEventList();
+    this.getEventList();
   }
 
 }

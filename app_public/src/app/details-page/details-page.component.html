@@ -1,8 +1,5 @@
-<div class="header">
-  <app-header></app-header>
-</div>
 <div class="page-content">
-  <app-event-details></app-event-details>
+  <app-event-details *ngIf="newEvent" [event]="newEvent"></app-event-details>
 </div>
 
 

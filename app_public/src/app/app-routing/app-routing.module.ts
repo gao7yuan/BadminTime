@@ -37,8 +37,7 @@ const routes : Routes = [
     component: EventsPageComponent
   },
   {
-    //path: 'event/:eventId',
-    path: 'eventId',
+    path: 'events/:eventId',
     component: DetailsPageComponent
   }
 ];
