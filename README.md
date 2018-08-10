@@ -12,8 +12,20 @@
    - ...
 
  - To Jeffrey:
-   - created one event in my local db and tried getEventList method via ``` http://localhost:3000/api/events.``` - did not work
-   - failed to push data from local db to mlab b/c ```heroku addons:open mongolab``` and ```heroku config:get MONGODB_URI``` don't seem to work on my end... (I can log into mlab but can't get uri somehow.)
+   ...
+
+## API documentation
+
+|        URL         | Method | Need login |                            Input                             |    Return     |                            Remark                            |
+| :----------------: | :----: | :--------: | :----------------------------------------------------------: | :-----------: | :----------------------------------------------------------: |
+|     '/events'      |  get   |     no     |                              -                               | [eventSchema] |     eventSchema can be found on app_api/models/events.js     |
+|                    |  post  |    yes     |       eventDate:String; address: String; intro: String       |  eventSchema  |                                                              |
+| '/events/:eventid' |  get   |     no     |                              -                               |  eventSchema  |                                                              |
+|                    |  put   |    yes     | organizer: eventDate:String; address: String; intro: String; participant: - |  eventSchema  | organizer: modify eventDate/address/intro; participant: join/quit the event if not in/in the participant list |
+|                    | delete |    yes     |                              -                               |       -       | Only delete the event when login user is the organizer. **Better also do the checking in the front end.** |
+|    '/register'     |  post  |     no     |        name: String; email: String; password: String;        |     token     |                                                              |
+|      '/login'      |  post  |     no     |               email: String; password: String;               |     token     |                                                              |
+
 
 ## Iteration 2.0
 ### Angular:

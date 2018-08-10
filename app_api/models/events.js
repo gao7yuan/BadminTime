@@ -1,29 +1,12 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    unique: true,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  userName: {
-    type: String,
-    unique: true,
-    require: true
-  }
-});
-
 const eventSchema = new mongoose.Schema({
   organizer: {
-    type: userSchema,
+    type: String,
     required: true,
   },
   participants: {
-    type: [userSchema],
+    type: [String],
     required: true,
   },
   createTime: {

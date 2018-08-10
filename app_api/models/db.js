@@ -42,3 +42,4 @@ process.on('SIGTERM', () => {
 });
 
 require('./events');
+require('./users');

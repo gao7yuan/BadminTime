@@ -1,10 +1,14 @@
+require('dotenv').load();
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const passport = require('passport');
 
 require('./app_api/models/db');
+require('./app_api/config/passport');
 const apiRoutes = require('./app_api/routes/index');
 
 const app = express();
@@ -23,6 +27,8 @@ app.use('/api', function (req, res, next) {
 
 app.use('/api', apiRoutes);
 
+app.use(passport.initialize());
+
 // send all requests to index.html. Let Angular handle routing.
 // regex determines what kind of urls we'll handle
 app.get(/(\/about)|(\/location\/[a-z0-9]{24})/, function(req, res, next) {
@@ -34,7 +40,17 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-// error handler
+// error handlers
+// catch unauthorized errors
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    res.status(401);
+    res.json({
+      "message" : `${err.name}: ${err.message}`
+    })
+  }
+});
+
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
