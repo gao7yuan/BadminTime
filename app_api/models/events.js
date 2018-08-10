@@ -10,13 +10,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  firstName: {
+  userName: {
     type: String,
+    unique: true,
     require: true
-  },
-  lastName : {
-    type: String,
-    required: true
   }
 });
 
@@ -33,9 +30,12 @@ const eventSchema = new mongoose.Schema({
     type: Date,
     'default': Date.now,
   },
-  eventTime: {
-    type: Date,
+  eventDate: {
+    type: String,
     required: true,
+  },
+  address: {
+    type: String,
   },
   intro: {
     type: String,
