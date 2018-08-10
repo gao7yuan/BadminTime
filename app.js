@@ -9,7 +9,6 @@ const apiRoutes = require('./app_api/routes/index');
 
 const app = express();
 
-// view engine setup
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

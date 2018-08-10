@@ -7,7 +7,8 @@ const getEventList = function (req, res) {
       res.status(400)
           .json(err);
     } else {
-      res.render('eventList', events);
+      res.status(200)
+          .json(events);
     }
   });
 };
