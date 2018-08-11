@@ -12,8 +12,11 @@
    - ...
 
  - To Jeffrey:
-   - created one event in my local db and tried getEventList method via ``` http://localhost:3000/api/events.``` - did not work
-   - failed to push data from local db to mlab b/c ```heroku addons:open mongolab``` and ```heroku config:get MONGODB_URI``` don't seem to work on my end... (I can log into mlab but can't get uri somehow.)
+   - refer to ```badmintime-data.service.ts``` for calling api from angular
+   - refer to ```event-list``` component for binding form data to object attributes and calling ```addEvent``` in data service.
+   - There are code blocks in ```badmintime-data.service.ts```, ```event-list``` and ```app_api/controllers/events.js``` for trouble shooting that are commented. Feel free to use them...
+   - In ```userSchema``` I temperarily commented ```required: true``` for password for the ease of tesing since there's no blank for password in the create event form on front end for now.
+   Thanks!!!
 
 ## Iteration 2.0
 ### Angular:

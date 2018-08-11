@@ -14,6 +14,9 @@ const getEventList = function (req, res) {
 };
 
 const addEvent = function (req, res) {
+  // for debugging:
+  // console.log("from api:", req.body);
+  // console.log("from api:", req.body.organizer.email);
   Eve.create({
     organizer: {
       email:req.body.email,
