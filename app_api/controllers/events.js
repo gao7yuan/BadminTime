@@ -40,25 +40,20 @@ const getEvent = function (req, res) {
         .findById(req.params.eventid)
         .exec((err, event) => {
           if (!event) {
-            res
-                .status(404)
+            res.status(404)
                 .json({
                   "message": "event not found"
                 });
-            return;
           } else if (err) {
-            res
-                .status(404)
+            res.status(404)
                 .json(err);
-            return;
+          } else {
+            res.status(200)
+                .json(event);
           }
-          res
-              .status(200)
-              .json(event);
         });
   } else {
-    res
-        .status(404)
+    res.status(404)
         .json({
           "message": "No event id in request"
         });
@@ -71,50 +66,52 @@ const modifyEvent = function (req, res) {
         .json({
           "message": "The event id is required"
         });
-    return;
   }
 
   _getUser(req, res, function (req, res, userName) {
-    Eve.findById(req.params.eventid)
-        .select('-organizer -createTime')
+    Eve
+        .findById(req.params.eventid)
+        .select('-createTime')
         .exec((err, event) => {
           if (!event) {
             res.status(404)
                 .json({
                   "message": "The event id is not found"
                 });
-            return;
           } else if (err) {
             res.status(400)
                 .json(err);
-            return;
-          }
-
-          // modify event by organizer: can change event time and/or intro
-          if (userName === event.organizer) {
-            event.eventDate = req.body.eventDate;
-            event.address = req.body.address;
-            event.intro = req.body.intro;
           } else {
-            // by participant: join or quit the event
-            if (event.participants.indexOf(userName) === -1) {
-              event.participants.push(userName);
-            } else {
-              event = event.filter(function (ele, index) {
-                return (ele !== userName);
-              });
-            }
-          }
 
-          event.save((err, event) => {
-            if (err) {
-              res.status(404)
-                  .json(err);
+            // modify event by organizer: can change event time and/or intro
+            if (userName === event.organizer) {
+              if (req.body.eventDate) {
+                event.eventDate = req.body.eventDate;
+              }
+              event.address = req.body.address;
+              event.intro = req.body.intro;
             } else {
-              res.status(200)
-                  .json(event);
+
+              // by participant: join or quit the event
+              if (event.participants.indexOf(userName) === -1) {
+                event.participants.push(userName);
+              } else {
+                event.participants = event.participants.filter(function (ele, index) {
+                  return (ele !== userName);
+                });
+              }
             }
-          })
+
+            event.save((err, event) => {
+              if (err) {
+                res.status(404)
+                    .json(err);
+              } else {
+                res.status(200)
+                    .json(event);
+              }
+            })
+          }
         });
   });
 };
@@ -128,24 +125,27 @@ const deleteEvent = function (req, res) {
             _id: eventid,
             organizer: userName
           })
-          .remove()
-          .exec((err) => {
+          .exec((err, event) => {
                 if (err) {
-                  res
-                      .status(404)
+                  res.status(404)
                       .json(err);
-                  return;
+                } else if (!event) {
+                  res.status(404)
+                      .json({
+                        "message": "only organizer can delete the event"
+                      });
+                } else {
+                  event.remove();
+                  res.status(204)
+                      .json(null);
                 }
-                res
-                    .status(204)
-                    .json(null);
               }
           );
     } else {
       res
           .status(404)
           .json({
-            "message": "No No event id in request"
+            "message": "No event id in request"
           });
     }
   });
@@ -157,24 +157,18 @@ const _getUser = function (req, res, callback) {
         .findOne({email: req.payload.email})
         .exec(function (err, user) {
           if (!user) {
-            res
-                .status(404)
+            res.status(404)
                 .json({
                   "message": "User not found"
                 });
-            return;
           } else if (err) {
-            console.log(err);
-            res
-                .status(404)
+            res.status(404)
                 .json(err);
-            return;
           }
           callback(req, res, user.name)
         });
   } else {
-    res
-        .status(404)
+    res.status(404)
         .json({
           "message": "User not found"
         });
