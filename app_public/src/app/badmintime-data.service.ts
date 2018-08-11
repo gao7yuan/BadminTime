@@ -37,11 +37,21 @@ export class BadmintimeDataService {
 
   public addEvent(formData: Event): Promise<Event> {
     const url: string = `${this.apiBaseUrl}/events`;
+    console.log("from data service:", formData);
     return this.http
       .post(url, formData)
       .toPromise()
       .then(response => response.json() as Event)
       .catch(this.handleError);
   }
-
+  // below is code for debugging:
+  /*
+  public addEvent(formData: Event): void {
+    const url: string = `${this.apiBaseUrl}/events`;
+    console.log("from data service:", formData);
+    this.http
+      .post(url, formData);
+    console.log("from data service: after post with input", formData);
+  }
+  */
 }

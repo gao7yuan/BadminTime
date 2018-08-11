@@ -10,7 +10,7 @@ export class Event {
     _id: string;
     organizer: User;
     participants: [User];
-    eventDate: Date;
+    eventTime: string;
     address: string;
     intro: string;
 }
