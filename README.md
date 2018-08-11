@@ -19,12 +19,12 @@
 |        URL         | Method | Need login |                            Input                             |    Return     |                            Remark                            |
 | :----------------: | :----: | :--------: | :----------------------------------------------------------: | :-----------: | :----------------------------------------------------------: |
 |     '/events'      |  get   |     no     |                              -                               | [eventSchema] |     eventSchema can be found on app_api/models/events.js     |
-|                    |  post  |    yes     |       eventDate:String; address: String; intro: String       |  eventSchema  |                                                              |
+|                    |  post  |    yes     |       **eventDate: String;** address: String; intro: String       |  eventSchema  |                                                              |
 | '/events/:eventid' |  get   |     no     |                              -                               |  eventSchema  |                                                              |
-|                    |  put   |    yes     | organizer: eventDate:String; address: String; intro: String; participant: - |  eventSchema  | organizer: modify eventDate/address/intro; participant: join/quit the event if not in/in the participant list |
-|                    | delete |    yes     |                              -                               |       -       | Only delete the event when login user is the organizer. **Better also do the checking in the front end.** |
-|    '/register'     |  post  |     no     |        name: String; email: String; password: String;        |     token     |                                                              |
-|      '/login'      |  post  |     no     |               email: String; password: String;               |     token     |                                                              |
+|                    |  put   |    yes     | *organizer:* eventDate: String; address: String; intro: String; *participant:* - |  eventSchema  | organizer: modify eventDate/address/intro; participant: join/quit the event if not in/in the participant list |
+|                    | delete |    yes     |                              -                               |       -       | Only organizer is able to delete the event. **Better also do the checking in the front end.** |
+|    '/register'     |  post  |     no     |        **name: String; email: String; password: String;**        |     token     |                                                              |
+|      '/login'      |  post  |     no     |            **email: String; password: String;**            |     token     |    token is required as authorization header for calling protected API routes   |
 
 
 ## Iteration 2.0
