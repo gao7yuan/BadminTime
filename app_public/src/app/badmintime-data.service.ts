@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { Event } from'./event';
+import {Event, EventPost} from './event';
 
 @Injectable()
 export class BadmintimeDataService {
@@ -35,9 +35,10 @@ export class BadmintimeDataService {
     return Promise.reject(error.message || error);
   }
 
-  public addEvent(formData: Event): Promise<Event> {
+  public addEvent(formData: EventPost): Promise<Event> {
     const url: string = `${this.apiBaseUrl}/events`;
     console.log("from data service:", formData);
+    console.log(url);
     return this.http
       .post(url, formData)
       .toPromise()
@@ -50,8 +51,8 @@ export class BadmintimeDataService {
     const url: string = `${this.apiBaseUrl}/events`;
     console.log("from data service:", formData);
     this.http
-      .post(url, formData);
-    console.log("from data service: after post with input", formData);
+      .eventToPost(url, formData);
+    console.log("from data service: after eventToPost with input", formData);
   }
   */
 }

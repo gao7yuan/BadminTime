@@ -17,6 +17,11 @@
    - There are code blocks in ```badmintime-data.service.ts```, ```event-list``` and ```app_api/controllers/events.js``` for trouble shooting that are commented. Feel free to use them...
    - In ```userSchema``` I temperarily commented ```required: true``` for password for the ease of tesing since there's no blank for password in the create event form on front end for now.
    Thanks!!!
+ 
+ - Solution  
+   - create new class `EventPost` in `event.ts`
+   - add `renderEventToPost` method to change Event to EventPost
+   - call this method before calling `badmintimeDataService.addEvent` at `event-list.component.js`
 
 ## Iteration 2.0
 ### Angular:
