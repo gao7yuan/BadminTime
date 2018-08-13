@@ -58,10 +58,10 @@ export class EventDetailsComponent implements OnInit {
     if (this.auth.isLoggedIn()){
       this.badmintimeDataService.modifyEvent(this.renderEventToPost(this.newEvent), this.event._id)
         .then((event: Event) => {
-          console.log('Event updated');
           this.resetAndHideEditForm();
-          location.reload();
+          this.router.navigateByUrl('events');
         })
+        .then(()=>{this.router.navigateByUrl(`/events/${this.event._id}`);})
     } else {
       this.errorMsg = "Please login first!";
     }

@@ -40,7 +40,7 @@ export class EventListComponent implements OnInit {
     intro: ''
   };
 
-  private newEventButtonClick(): void {
+  public newEventButtonClick(): void {
     if (this.auth.isLoggedIn()) {
       this.createFormVisible=true;
     } else {
@@ -80,7 +80,6 @@ export class EventListComponent implements OnInit {
 
       this.badmintimeDataService.addEvent(this.renderEventToPost(this.newEvent))
         .then((event: Event) => {
-          console.log('Event saved', event);
           this.events.unshift(event);
           this.resetAndHideCreateForm();
         })
