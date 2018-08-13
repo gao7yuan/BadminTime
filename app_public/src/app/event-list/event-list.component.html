@@ -1,6 +1,8 @@
 <div class="content">
+  <div *ngIf="buttonError" class="alert alert-danger" role="alert" [innerHtml]="buttonError">
+  </div>
   <div class="create-event-button">
-    <button type="button" class="btn btn-primary float-right" (click)="createFormVisible=true">
+    <button type="button" class="btn btn-primary float-right" (click)="newEventButtonClick()">
       New Event
     </button>
   </div>

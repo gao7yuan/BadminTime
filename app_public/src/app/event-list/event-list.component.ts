@@ -23,6 +23,7 @@ export class EventListComponent implements OnInit {
   events: Event[];
 
   formError: string;
+  buttonError: string;
 
   public newEvent: Event = {
     _id: '',
@@ -38,6 +39,15 @@ export class EventListComponent implements OnInit {
     address: '',
     intro: ''
   };
+
+  private newEventButtonClick(): void {
+    if (this.auth.isLoggedIn()) {
+      this.createFormVisible=true;
+    } else {
+      this.buttonError="please login first to create new event";
+    }
+
+  }
 
   private renderEventToPost(newEvent: Event): EventPost {
     this.eventToPost.eventDate = newEvent.eventDate;
