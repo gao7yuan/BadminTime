@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-
+import {AuthenticationService} from "./authentication.service";
 import {Event, EventPost} from './event';
 
 @Injectable()
 export class BadmintimeDataService {
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private auth: AuthenticationService) { }
 
   private apiBaseUrl = 'http://localhost:3000/api';
   // private apiBaseUrl = 'https:loc8r-yuangao.herokuapp.com/api';
@@ -36,9 +36,9 @@ export class BadmintimeDataService {
   }
 
   public addEvent(formData: EventPost): Promise<Event> {
+    const headers = new Headers();
+    headers.append("Authorization", `Bearer ${this.auth.getToken()}`);
     const url: string = `${this.apiBaseUrl}/events`;
-    console.log("from data service:", formData);
-    console.log(url);
     return this.http
       .post(url, formData)
       .toPromise()

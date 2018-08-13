@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
+import {TokenPayload} from '../user'
 
 @Component({
   selector: 'app-login',
@@ -7,7 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  credentials: TokenPayload = {
+    email: '',
+    password: ''
+  };
+
+  constructor(private auth: AuthenticationService, private router: Router) { }
+
+  login() {
+    this.auth.login(this.credentials).subscribe(() => {
+      // login successful, redirect to homepage
+      this.router.navigateByUrl('/');
+    }, (err) => {
+      console.error(err);
+    });
+  }
 
   ngOnInit() {
   }

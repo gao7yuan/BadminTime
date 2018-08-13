@@ -11,16 +11,16 @@
       <form (ngSubmit)="onEventSubmit()" class="create-event-form">
           <div *ngIf="formError" class="alert alert-danger" role="alert" [innerHtml]="formError">
           </div>
-          <div class="user-info">
-              <div class="form-group username-form">
-                  <label for="username">Username</label>
-                  <input [(ngModel)]="newEvent.organizer.userName" name="username" type="text" class="form-control" id="username" placeholder="Username">
-                </div>
-                <div class="form-group email-form">
-                  <label for="mail">Contact Email</label>
-                  <input [(ngModel)]="newEvent.organizer.email" name="email" type="email" class="form-control" id="email" placeholder="Email Address">
-                </div>
-          </div>
+          <!--<div class="user-info">-->
+              <!--<div class="form-group username-form">-->
+                  <!--<label for="username">Username</label>-->
+                  <!--<input [(ngModel)]="newEvent.organizer" name="username" type="text" class="form-control" id="username" placeholder="Username">-->
+                <!--</div>-->
+                <!--<div class="form-group email-form">-->
+                  <!--<label for="mail">Contact Email</label>-->
+                  <!--<input [(ngModel)]="newEvent.organizer.email" name="email" type="email" class="form-control" id="email" placeholder="Email Address">-->
+                <!--</div>-->
+          <!--</div>-->
           <div class="event-time">
               <div class="form-group date-form">
                   <label for="date">Event Date</label>
@@ -41,13 +41,12 @@
 <div class="card" *ngFor="let event of events">
   <div class="card-block">
     <h4>
-      <a routerLink="/events/{{event._id}}">{{event.organizer.userName}}'s Event</a>
+      <a routerLink="/events/{{event._id}}">{{event.organizer}}'s Event</a>
     </h4>
    <p class="address">Address: {{event.address}}</p>
     <p class="event-time">Event time: {{event.eventDate}}</p>
     <p class="num-participants">Currently {{event.participants.length}} participant(s)</p>
   </div>
 </div>
-  
-  
+
 
