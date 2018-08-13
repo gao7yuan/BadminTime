@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import {AuthenticationService} from "./authentication.service";
 import {Event, EventPost} from './event';
@@ -7,7 +7,7 @@ import {Event, EventPost} from './event';
 @Injectable()
 export class BadmintimeDataService {
 
-  constructor(private http: Http, private auth: AuthenticationService) { }
+  constructor(private http: HttpClient, private auth: AuthenticationService) { }
 
   private apiBaseUrl = 'http://localhost:3000/api';
   // private apiBaseUrl = 'https:loc8r-yuangao.herokuapp.com/api';
@@ -17,7 +17,7 @@ export class BadmintimeDataService {
     return this.http
       .get(url)
       .toPromise()
-      .then(response => response.json() as Event[])
+      .then(response => response as Event[])
       .catch(this.handleError);
   }
 
@@ -26,7 +26,7 @@ export class BadmintimeDataService {
     return this.http
       .get(url)
       .toPromise()
-      .then(response => response.json() as Event)
+      .then(response => response as Event)
       .catch(this.handleError);
   }
 
@@ -36,13 +36,16 @@ export class BadmintimeDataService {
   }
 
   public addEvent(formData: EventPost): Promise<Event> {
-    const headers = new Headers();
-    headers.append("Authorization", `Bearer ${this.auth.getToken()}`);
+    const options = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.auth.getToken()}`
+      })
+    };
     const url: string = `${this.apiBaseUrl}/events`;
     return this.http
-      .post(url, formData)
+      .post(url, formData, options)
       .toPromise()
-      .then(response => response.json() as Event)
+      .then(response => response as Event)
       .catch(this.handleError);
   }
 
@@ -55,7 +58,7 @@ export class BadmintimeDataService {
     return this.http
       .put(url, formData)
       .toPromise()
-      .then(response => response.json() as Event)
+      .then(response => response as Event)
       .catch(this.handleError);
   }
 

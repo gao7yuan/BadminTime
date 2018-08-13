@@ -16,13 +16,16 @@ export class RegisterComponent implements OnInit {
     password: '',
   };
 
-  checkPassword: string;
+  checkPassword: '';
 
   constructor(private auth: AuthenticationService, private router: Router) {
   }
 
   register() {
-    if (this.credentials.password !== this.checkPassword) {
+    if (this.credentials.name === ''
+      || this.credentials.name === '' || this.credentials.password === '') {
+      console.error("please fill in all forms");
+    } else if (this.credentials.password !== this.checkPassword) {
       console.error("password not the same, check again");
     } else {
       this.auth.register(this.credentials).subscribe(() => {

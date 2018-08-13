@@ -11,16 +11,17 @@
       <form (ngSubmit)="onEventSubmit()" class="create-event-form">
           <div *ngIf="formError" class="alert alert-danger" role="alert" [innerHtml]="formError">
           </div>
-          <!--<div class="user-info">-->
-              <!--<div class="form-group username-form">-->
-                  <!--<label for="username">Username</label>-->
+          <div class="user-info">
+              <div class="form-group username-form">
+                  <label >Username</label>
+                <label>{{ auth.getUserDetails()?.name }}</label>
                   <!--<input [(ngModel)]="newEvent.organizer" name="username" type="text" class="form-control" id="username" placeholder="Username">-->
-                <!--</div>-->
+                </div>
                 <!--<div class="form-group email-form">-->
                   <!--<label for="mail">Contact Email</label>-->
                   <!--<input [(ngModel)]="newEvent.organizer.email" name="email" type="email" class="form-control" id="email" placeholder="Email Address">-->
                 <!--</div>-->
-          <!--</div>-->
+          </div>
           <div class="event-time">
               <div class="form-group date-form">
                   <label for="date">Event Date</label>

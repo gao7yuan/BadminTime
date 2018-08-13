@@ -154,7 +154,7 @@ const deleteEvent = function (req, res) {
 const _getUser = function (req, res, callback) {
   if (req.payload && req.payload.email) {
     User
-        .findOne({email: req.payload.email})
+        .findOne({_id: req.payload._id})
         .exec(function (err, user) {
           if (!user) {
             res.status(404)
