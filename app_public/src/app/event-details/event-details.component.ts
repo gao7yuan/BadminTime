@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Router} from '@angular/router';
 import {Event, EventPost} from "../event";
 import {BadmintimeDataService} from "../badmintime-data.service";
@@ -15,13 +15,12 @@ export class EventDetailsComponent implements OnInit {
   @Input() event: Event;
 
   constructor(private badmintimeDataService: BadmintimeDataService,
-              public auth: AuthenticationService, private router: Router,
-              private cdr: ChangeDetectorRef) {
+              public auth: AuthenticationService, private router: Router) {
   }
 
   public editFormVisible: boolean = false;
 
-  deleteError: string;
+  errorMsg: string;
 
   public newEvent: Event = {
     _id: '',
@@ -56,12 +55,17 @@ export class EventDetailsComponent implements OnInit {
   }
 
   public onEditSubmit(): void {
-    this.badmintimeDataService.modifyEvent(this.renderEventToPost(this.newEvent), this.event._id)
-      .then((event: Event) => {
-        console.log('Event updated');
-        this.resetAndHideEditForm();
-        this.cdr.detectChanges();
-      })
+    if (this.auth.isLoggedIn()){
+      this.badmintimeDataService.modifyEvent(this.renderEventToPost(this.newEvent), this.event._id)
+        .then((event: Event) => {
+          console.log('Event updated');
+          this.resetAndHideEditForm();
+          location.reload();
+        })
+    } else {
+      this.errorMsg = "Please login first!";
+    }
+
   }
 
   public onDelete(): void {
@@ -69,7 +73,7 @@ export class EventDetailsComponent implements OnInit {
       // delete successful, redirect to explore
       this.router.navigateByUrl('events');
     }, (err) => {
-      this.deleteError = "delete error!";
+      this.errorMsg = "Delete error!";
     })
 
   }
