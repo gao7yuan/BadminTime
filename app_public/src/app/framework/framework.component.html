@@ -1,8 +1,9 @@
 <nav class="navbar navbar-fixed-top navbar-expand-md navbar-light bg-light">
   <div class="container">
     <a routerLink="" class="navbar-brand">BadminTime</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarMain"
+            aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarMain">
       <ul class="navbar-nav mr-auto mt-md-0">
@@ -10,19 +11,22 @@
           <a class="nav-link" routerLink="">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" routerLink="events">Explore</a>
-          </li>
-        <li *ngIf="isLoggedIn" class="nav-item">
+          <a class="nav-link" routerLink="events">Explore</a>
+        </li>
+        <li *ngIf="auth.isLoggedIn()" class="nav-item">
           <a class="nav-link" routerLink="my-events">My Events</a>
         </li>
-        <li *ngIf="isLoggedIn" class="nav-item">
-            <a class="nav-link" routerLink="" (click)="isLoggedIn=false">Logout</a>
-          </li>     
-        <li *ngIf="!isLoggedIn" class="nav-item">
+        <li *ngIf="auth.isLoggedIn()" class="nav-item">
+          <a class="nav-link" routerLink="" (click)="auth.logout()">Logout</a>
+        </li>
+        <li *ngIf="!auth.isLoggedIn()" class="nav-item">
           <a class="nav-link" routerLink="login">Login</a>
         </li>
-        <li *ngIf="!isLoggedIn" class="nav-item">
+        <li *ngIf="!auth.isLoggedIn()" class="nav-item">
           <a class="nav-link" routerLink="register">Register</a>
+        </li>
+        <li *ngIf="auth.isLoggedIn()" class="nav-item">
+          <a class="nav-link" routerLink="profile">{{ auth.getUserDetails()?.name }}</a>
         </li>
       </ul>
     </div>

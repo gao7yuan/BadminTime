@@ -23,33 +23,21 @@ export class EventDetailsComponent implements OnInit {
 
   public newEvent: Event = {
     _id: '',
-    organizer: {
-      email: '',
-      userName: ''
-    },
-    participants: [{
-      email: '',
-      userName: ''
-    }],
+    organizer: '',
+    participants: [''],
     eventDate: '',
     address: '',
     intro: ''
   };
 
   public eventToPost: EventPost = {
-    _id: '',
-    email: '',
-    userName: '',
     eventDate: '',
     address: '',
     intro: ''
   };
 
   private renderEventToPost(newEvent: Event): EventPost {
-    this.eventToPost._id = newEvent._id;
     this.eventToPost.address = newEvent.address;
-    this.eventToPost.userName = newEvent.organizer.userName;
-    this.eventToPost.email = newEvent.organizer.email;
     this.eventToPost.eventDate = newEvent.eventDate;
     this.eventToPost.intro = newEvent.intro;
     return this.eventToPost;
@@ -58,14 +46,8 @@ export class EventDetailsComponent implements OnInit {
   private resetAndHideEditForm(): void {
     this.editFormVisible = false;
     this.newEvent._id = '';
-    this.newEvent.organizer = {
-      email: '',
-      userName: ''
-    };
-    this.newEvent.participants = [{
-      email: '',
-      userName: ''
-    }];
+    this.newEvent.organizer = '';
+    this.newEvent.participants = [''];
     this.newEvent.eventDate = '';
     this.newEvent.address = '';
     this.newEvent.intro = '';
@@ -76,8 +58,6 @@ export class EventDetailsComponent implements OnInit {
     if (this.formIsValid()) {
 
       // this code will need to be changed later after introducing login feature
-      this.newEvent.organizer.userName = this.event.organizer.userName;
-    
       this.badmintimeDataService.modifyEvent(this.renderEventToPost(this.newEvent), this.event._id)
         .then((event: Event) => {
           console.log('Event updated', event);
@@ -90,7 +70,7 @@ export class EventDetailsComponent implements OnInit {
   }
 
   public onDelete(): void {
-    
+
   }
 
     /* validating front end object content */

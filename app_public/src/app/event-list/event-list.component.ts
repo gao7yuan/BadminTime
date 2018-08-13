@@ -1,8 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {BadmintimeDataService} from '../badmintime-data.service';
-
+import { AuthenticationService } from '../authentication.service';
 import {Event, EventPost} from '../event';
-import {User} from '../user';
 
 @Component({
   selector: 'app-event-list',
@@ -14,12 +13,12 @@ export class EventListComponent implements OnInit {
 
   @Input() event: Event;
 
-  constructor(private badmintimeDataService: BadmintimeDataService) {
+  constructor(private badmintimeDataService: BadmintimeDataService,
+              public auth: AuthenticationService) {
   }
 
   public createFormVisible: boolean = false;
 
-  
 
   events: Event[];
 
@@ -27,34 +26,22 @@ export class EventListComponent implements OnInit {
 
   public newEvent: Event = {
     _id: '',
-    organizer: {
-      email: '',
-      userName: ''
-    },
-    participants: [{
-      email: '',
-      userName: ''
-    }],
+    organizer: '',
+    participants: [''],
     eventDate: '',
     address: '',
     intro: ''
   };
 
   public eventToPost: EventPost = {
-    _id: '',
-    email: '',
-    userName: '',
     eventDate: '',
     address: '',
     intro: ''
   };
 
   private renderEventToPost(newEvent: Event): EventPost {
-    this.eventToPost._id = newEvent._id;
-    this.eventToPost.address = newEvent.address;
-    this.eventToPost.userName = newEvent.organizer.userName;
-    this.eventToPost.email = newEvent.organizer.email;
     this.eventToPost.eventDate = newEvent.eventDate;
+    this.eventToPost.address = newEvent.address;
     this.eventToPost.intro = newEvent.intro;
     return this.eventToPost;
   }
@@ -62,14 +49,8 @@ export class EventListComponent implements OnInit {
   private resetAndHideCreateForm(): void {
     this.createFormVisible = false;
     this.newEvent._id = '';
-    this.newEvent.organizer = {
-      email: '',
-      userName: ''
-    };
-    this.newEvent.participants = [{
-      email: '',
-      userName: ''
-    }];
+    this.newEvent.organizer = '';
+    this.newEvent.participants = [''];
     this.newEvent.eventDate = '';
     this.newEvent.address = '';
     this.newEvent.intro = '';
@@ -101,12 +82,7 @@ export class EventListComponent implements OnInit {
 
   /* validating front end object content */
   private formIsValid(): boolean {
-
-    if (this.newEvent.organizer && this.newEvent.eventDate && this.newEvent.address) {
-      return true;
-    } else {
-      return false;
-    }
+    return !!(this.newEvent.eventDate && this.newEvent.address);
   }
 
   ngOnInit() {

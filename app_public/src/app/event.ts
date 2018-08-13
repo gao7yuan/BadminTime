@@ -1,24 +1,13 @@
-import { User } from "./User";
-/*
-class EventTime {
-    date: Date;
-    startTime: string; // will modify later
-    endTime: string;
-}
-*/
 export class Event {
     _id: string;
-    organizer: User;
-    participants: [User];
+    organizer: string;
+    participants: [string];
     eventDate: string;
     address: string;
-    intro: string;
+    intro?: string;
 }
-export class EventPost {
-  _id: string;
-  userName: string;
-  email: string;
+export interface EventPost {
   eventDate: string;
-  address: string;
-  intro: string;
+  address?: string;
+  intro?: string;
 }

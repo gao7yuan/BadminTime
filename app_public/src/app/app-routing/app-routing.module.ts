@@ -9,6 +9,8 @@ import { EventListComponent } from '../event-list/event-list.component';
 import { EventsPageComponent } from '../events-page/events-page.component';
 import { RegisterPageComponent } from '../register-page/register-page.component';
 import { MyEventsPageComponent } from '../my-events-page/my-events-page.component';
+import {ProfileComponent} from "../profile/profile.component";
+import {AuthguardService} from "../authguard.service";
 
 const routes : Routes = [
   {
@@ -34,6 +36,11 @@ const routes : Routes = [
   {
     path: 'events/:eventId',
     component: DetailsPageComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthguardService]
   }
 ];
 
