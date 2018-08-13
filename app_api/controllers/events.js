@@ -7,16 +7,29 @@ const getEventList = function (req, res) {
       res.status(400)
           .json(err);
     } else {
-      res.render('eventList', events);
+      res.status(200)
+          .json(events);
     }
   });
 };
 
 const addEvent = function (req, res) {
+  // for debugging:
+  console.log("from api:", req.body);
+  // console.log("from api:", req.body.organizer.email);
   Eve.create({
-    organizer: req.body.organizer,
-    participants: [],
-    eventTime: req.body.eventTime,
+    organizer: {
+      email:req.body.email,
+      // password:req.body.password,
+      userName:req.body.userName
+    },
+    participants: [{
+      email:req.body.email,
+      // password:req.body.password,
+      userName:req.body.userName
+    }],
+    eventDate: req.body.eventDate,
+    address: req.body.address,
     intro: req.body.intro
   }, (err, event) => {
     if (err) {
@@ -85,11 +98,12 @@ const modifyEvent = function (req, res) {
         }
 
         // modify event by organizer: can change event time and/or intro
-        // by participant: join the event
-        if (req.body.user.email===event.organizer.email) {
-          event.eventTime = req.body.eventTime;
-          event.intro = req.body.intro;
+        if (req.body.userName===event.organizer.userName) {
+          event.eventDate = req.body.eventDate;
+          event.address = req.body.address;
+          // event.intro = req.body.intro;
         } else {
+          // by participant: join or quit the event
           event.participants.push(req.body.user);
         }
 
