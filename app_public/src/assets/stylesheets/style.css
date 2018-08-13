@@ -82,9 +82,15 @@ p {
     margin-bottom: 0.65rem;
 }
 
-.page-container:before {
+/* page background */
+
+.container {
+    margin-top: 20px;
+}
+
+.home-container:before {
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -95,6 +101,40 @@ p {
     background-size: cover;
     opacity: 0.4;
     z-index: 0;
+}
+
+.events-container:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url('../../assets/images/badminton1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.4;
+    z-index: 0;
+}
+
+.user-container:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url('../../assets/images/badminton2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.4;
+    z-index: 0;
+}
+
+.user-container {
+    margin-top: 85px;
 }
 
 .page-container {
@@ -143,7 +183,6 @@ body {
 
 .signup-button {
     max-width: 100px;
-    display: block;
 }
 
 .create-event-button {
@@ -153,7 +192,13 @@ body {
     z-index: 3;
 }
 
-
+.edit-btn {
+    width: 100px;
+    display: inline-block;
+    position: relative;
+    z-index: 3;
+    margin: 10px;
+}
 
 button {
     padding: 14px 20px;
