@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
   };
 
   checkPassword: '';
+  error: string;
 
   constructor(private auth: AuthenticationService, private router: Router) {
   }
@@ -24,9 +25,9 @@ export class RegisterComponent implements OnInit {
   register() {
     if (this.credentials.name === ''
       || this.credentials.name === '' || this.credentials.password === '') {
-      console.error("please fill in all forms");
+      this.error="please fill in all forms";
     } else if (this.credentials.password !== this.checkPassword) {
-      console.error("password not the same, check again");
+      this.error="password not the same, check again";
     } else {
       this.auth.register(this.credentials).subscribe(() => {
         // register successful, redirect to login page

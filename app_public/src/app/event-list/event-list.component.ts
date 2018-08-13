@@ -76,7 +76,7 @@ export class EventListComponent implements OnInit {
         })
 
     } else {
-      this.formError = 'Please fill in all the fields.';
+      this.formError = 'Please fill in all the required fields.';
     }
   }
 

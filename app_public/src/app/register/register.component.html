@@ -1,5 +1,6 @@
 <div class="text-center">
   <form class="form-register" (submit)="register()">
+    <div *ngIf="error" class="alert alert-danger" role="alert" [innerHtml]="error"></div>
     <!-- <img src="../../assets/images/shuttlecock-big.jpg" alt width="72" height="72"> -->
     <h1 class="h3 mb-3 font-weight-normal">Come Join Us!</h1>
     <div class="form-group">
