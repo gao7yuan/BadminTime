@@ -45,14 +45,23 @@ export class BadmintimeDataService {
       .then(response => response.json() as Event)
       .catch(this.handleError);
   }
-  // below is code for debugging:
-  /*
-  public addEvent(formData: Event): void {
-    const url: string = `${this.apiBaseUrl}/events`;
+
+  // have problems: cant call put
+
+  public modifyEvent(formData: EventPost, eventId: string): Promise<Event> {
+    const url: string = `${this.apiBaseUrl}/events/${eventId}`;
     console.log("from data service:", formData);
-    this.http
-      .eventToPost(url, formData);
-    console.log("from data service: after eventToPost with input", formData);
+    console.log(url);
+    return this.http
+      .put(url, formData)
+      .toPromise()
+      .then(response => response.json() as Event)
+      .catch(this.handleError);
   }
-  */
+
+  // unfinished
+
+  public deleteEvent(eventId: string): void {
+
+  }
 }

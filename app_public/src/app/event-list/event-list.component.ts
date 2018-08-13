@@ -19,6 +19,8 @@ export class EventListComponent implements OnInit {
 
   public createFormVisible: boolean = false;
 
+  
+
   events: Event[];
 
   formError: string;
@@ -81,14 +83,10 @@ export class EventListComponent implements OnInit {
       });
   }
 
-  // this potentially has problem:
   public onEventSubmit(): void {
     this.formError = '';
     if (this.formIsValid()) {
-      // uncomment following line and comment the block below for debugging
-      // this.badmintimeDataService.addEvent(this.newEvent)
 
-      // comment the following block for debugging
       this.badmintimeDataService.addEvent(this.renderEventToPost(this.newEvent))
         .then((event: Event) => {
           console.log('Event saved', event);

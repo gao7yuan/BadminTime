@@ -31,5 +31,37 @@
         </form>
   </div>
 </div>
+<div class="create-event-button">
+  <button type="button" class="btn btn-primary float-right" (click)="editFormVisible=true">
+    Edit
+  </button>
+</div>
+<div class="card" *ngIf="editFormVisible">
+  <div class="card-block">
+      <form (ngSubmit)="onEditSubmit()" class="create-event-form">
+          <div *ngIf="formError" class="alert alert-danger" role="alert" [innerHtml]="formError">
+          </div>
+          <div class="event-time">
+              <div class="form-group date-form">
+                  <label for="date">Event Date</label>
+                  <input [(ngModel)]="newEvent.eventDate" name="date" type="text" class="form-control" id="date">
+                </div>
+          </div>
+
+          <div class="form-group address-form">
+            <label for="eventAddress">Event Address</label>
+            <textarea [(ngModel)]="newEvent.address" name="address" class="form-control" id="eventAddress" rows="3"></textarea>
+          </div>
+
+              <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
+              <button type="cancel" class="btn btn-primary" id="cancel-btn" (click)="editFormVisible=false">Cancel</button>
+        </form>
+  </div>
+</div>
+<div class="create-event-button">
+  <button type="button" class="btn btn-primary float-right" (click)="onDelete()">
+    Delete
+  </button>
+</div>
 
 

@@ -101,7 +101,7 @@ const modifyEvent = function (req, res) {
         if (req.body.userName===event.organizer.userName) {
           event.eventDate = req.body.eventDate;
           event.address = req.body.address;
-          event.intro = req.body.intro;
+          // event.intro = req.body.intro;
         } else {
           // by participant: join or quit the event
           event.participants.push(req.body.user);
