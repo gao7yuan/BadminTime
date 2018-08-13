@@ -97,6 +97,10 @@ p {
     z-index: 0;
 }
 
+.page-container {
+    margin-top: 20px;
+}
+
 .slogan-content {
     position: relative;
     margin: 15%;

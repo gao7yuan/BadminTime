@@ -5,65 +5,49 @@
     </button>
   </div>
 </div>
+<!-- create form -->
 <div class="card" *ngIf="createFormVisible">
   <div class="card-block">
-      <form class="create-event-form">
+      <form (ngSubmit)="onEventSubmit()" class="create-event-form">
+          <div *ngIf="formError" class="alert alert-danger" role="alert" [innerHtml]="formError">
+          </div>
           <div class="user-info">
               <div class="form-group username-form">
-                  <label for="userName">Username</label>
-                  <input type="text" class="form-control" id="userName" placeholder="Username">
+                  <label for="username">Username</label>
+                  <input [(ngModel)]="newEvent.organizer.userName" name="username" type="text" class="form-control" id="username" placeholder="Username">
                 </div>
                 <div class="form-group email-form">
-                  <label for="inputEmail">Contact Email</label>
-                  <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
+                  <label for="mail">Contact Email</label>
+                  <input [(ngModel)]="newEvent.organizer.email" name="email" type="email" class="form-control" id="email" placeholder="Email Address">
                 </div>
           </div>
           <div class="event-time">
               <div class="form-group date-form">
-                  <label for="inputDate">Event Date</label>
-                  <input type="date" class="form-control" id="inputDate">
-                </div>
-                <div class="form-group time-form">
-                  <label for="inputTime">Start Time</label>
-                  <input type="time" class="form-control" id="inputTime">
+                  <label for="date">Event Date</label>
+                  <input [(ngModel)]="newEvent.eventDate" name="date" type="text" class="form-control" id="date">
                 </div>
           </div>
-        
+
           <div class="form-group address-form">
             <label for="eventAddress">Event Address</label>
-            <textarea class="form-control" id="eventAddress" rows="3"></textarea>
+            <textarea [(ngModel)]="newEvent.address" name="address" class="form-control" id="eventAddress" rows="3"></textarea>
           </div>
+
               <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
               <button type="cancel" class="btn btn-primary" id="cancel-btn" (click)="createFormVisible=false">Cancel</button>
         </form>
   </div>
 </div>
-<!-- <div class="card" *ngFor="let event of events"> -->
 <div class="card" *ngFor="let event of events">
   <div class="card-block">
     <h4>
-      <a>{{event.organizer.username}}'s Event</a>
-      <!-- <a routerLink="/eventId">Yuan's Event</a> -->
+      <a routerLink="/events/{{event._id}}">{{event.organizer.userName}}'s Event</a>
     </h4>
    <p class="address">Address: {{event.address}}</p>
     <p class="event-time">Event time: {{event.eventDate}}</p>
-    <p class="num-participants">Currently {{event.participants.length}} participant(s)</p> 
-<!--     <p class="address">Address: 3616 South Road, Building D, Mukilteo, WA 98275</p>
-    <p class="event-time">Event time: Aug 1, 2018 7:30pm to 10:00pm</p>
-    <p class="num-participants">Currently 6 participants</p> -->
+    <p class="num-participants">Currently {{event.participants.length}} participant(s)</p>
   </div>
 </div>
-<div class="card">
-  <div class="card-block">
-    <h4>
-      <!-- <a routerLink="event/{{event._id}}">{{event.organizer.firstName}}'s Event</a> -->
-      <a routerLink="/eventId">Meow's Event</a>
-    </h4>
-    <!-- <p class="address">Address: {{event.address}}</p> -->
-    <!-- <p class="event-time">Event time: {{event.eventTime.date}} {{event.eventTime.startTime}} to {{event.eventTime.endTime}}</p> -->
-    <!-- <p class="num-participants">Currently {{event.participants.length}} participants</p> -->
-    <p class="address">Address: 3616 South Road, Building D, Mukilteo, WA 98275</p>
-    <p class="event-time">Event time: Aug 1, 2018 7:30pm to 10:00pm</p>
-    <p class="num-participants">Currently 6 participants</p>
-  </div>
-</div>
+  
+  
+
