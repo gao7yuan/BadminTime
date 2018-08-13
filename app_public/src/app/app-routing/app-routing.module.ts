@@ -5,7 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from '../homepage/homepage.component';
 import { LoginPageComponent } from '../login-page/login-page.component';
 import { DetailsPageComponent } from '../details-page/details-page.component';
-import { EventListComponent } from '../event-list/event-list.component';
 import { EventsPageComponent } from '../events-page/events-page.component';
 import { RegisterPageComponent } from '../register-page/register-page.component';
 import { MyEventsPageComponent } from '../my-events-page/my-events-page.component';
