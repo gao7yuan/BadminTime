@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Event} from "../event";
+import {AuthenticationService} from '../authentication.service';
+import {BadmintimeDataService} from '../badmintime-data.service';
+
 
 @Component({
   selector: 'app-my-events',
@@ -7,9 +11,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyEventsComponent implements OnInit {
 
-  constructor() { }
+  @Input() event: Event;
+
+  myEvents: Event[];
+
+  constructor(private auth: AuthenticationService,
+              private badmintimeDataService: BadmintimeDataService) {
+    // this.getMyEvents=this.getMyEvents.bind(this);
+  }
+
+  private getEventList(): void {
+    this.badmintimeDataService
+      .getEventList()
+      .then(foundEvents => {
+        this.myEvents = this.getMyEvents(this.auth, foundEvents);
+      });
+  }
+
+  private getMyEvents(auth: AuthenticationService, foundEvents: Event[]): Event[] {
+    return foundEvents.filter(function (event, index) {
+      return (event.participants.includes(auth.getUserDetails().name));
+    });
+  }
+
 
   ngOnInit() {
+    this.getEventList();
   }
 
 }

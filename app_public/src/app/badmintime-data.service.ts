@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import {AuthenticationService} from "./authentication.service";
 import {Event, EventPost} from './event';
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class BadmintimeDataService {
@@ -52,19 +53,27 @@ export class BadmintimeDataService {
   // have problems: cant call put
 
   public modifyEvent(formData: EventPost, eventId: string): Promise<Event> {
+    const options = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.auth.getToken()}`
+      })
+    };
     const url: string = `${this.apiBaseUrl}/events/${eventId}`;
-    console.log("from data service:", formData);
-    console.log(url);
     return this.http
-      .put(url, formData)
+      .put(url, formData, options)
       .toPromise()
       .then(response => response as Event)
       .catch(this.handleError);
   }
 
-  // unfinished
-
-  public deleteEvent(eventId: string): void {
-
+  public deleteEvent(eventId: string): Observable<any> {
+    const options = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.auth.getToken()}`
+      })
+    };
+    const url: string = `${this.apiBaseUrl}/events/${eventId}`;
+    return this.http
+      .delete(url, options)
   }
 }

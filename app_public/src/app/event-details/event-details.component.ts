@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-
-import { Event, EventPost } from "../event";
-import { BadmintimeDataService } from "../badmintime-data.service";
+import {Component, OnInit, Input, ChangeDetectorRef} from '@angular/core';
+import {Router} from '@angular/router';
+import {Event, EventPost} from "../event";
+import {BadmintimeDataService} from "../badmintime-data.service";
+import {AuthenticationService} from '../authentication.service';
 
 @Component({
   selector: 'app-event-details',
@@ -13,13 +14,14 @@ export class EventDetailsComponent implements OnInit {
 
   @Input() event: Event;
 
-  constructor(private badmintimeDataService: BadmintimeDataService) { }
-
-  public signupFormVisible: boolean = false;
+  constructor(private badmintimeDataService: BadmintimeDataService,
+              public auth: AuthenticationService, private router: Router,
+              private cdr: ChangeDetectorRef) {
+  }
 
   public editFormVisible: boolean = false;
 
-  formError: string;
+  deleteError: string;
 
   public newEvent: Event = {
     _id: '',
@@ -54,34 +56,23 @@ export class EventDetailsComponent implements OnInit {
   }
 
   public onEditSubmit(): void {
-    this.formError = '';
-    if (this.formIsValid()) {
-
-      // this code will need to be changed later after introducing login feature
-      this.badmintimeDataService.modifyEvent(this.renderEventToPost(this.newEvent), this.event._id)
-        .then((event: Event) => {
-          console.log('Event updated', event);
-          this.resetAndHideEditForm();
-        })
-
-    } else {
-      this.formError = 'Please fill in all the fields.';
-    }
+    this.badmintimeDataService.modifyEvent(this.renderEventToPost(this.newEvent), this.event._id)
+      .then((event: Event) => {
+        console.log('Event updated');
+        this.resetAndHideEditForm();
+        this.cdr.detectChanges();
+      })
   }
 
   public onDelete(): void {
+    this.badmintimeDataService.deleteEvent(this.event._id).subscribe(() => {
+      // delete successful, redirect to explore
+      this.router.navigateByUrl('events');
+    }, (err) => {
+      this.deleteError = "delete error!";
+    })
 
   }
-
-    /* validating front end object content */
-    private formIsValid(): boolean {
-
-      if (this.newEvent.eventDate && this.newEvent.address) {
-        return true;
-      } else {
-        return false;
-      }
-    }
 
   ngOnInit() {
   }

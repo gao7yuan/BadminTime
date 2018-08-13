@@ -1,15 +1,11 @@
-<!-- <div class="card" *ngFor="let event of events"> -->
-    <div class="card">
-        <div class="card-block">
-          <h4>
-            <!-- <a routerLink="event/{{event._id}}">{{event.organizer.firstName}}'s Event</a> -->
-            <a>Yuan's Event</a>
-          </h4>
-          <!-- <p class="address">Address: {{event.address}}</p> -->
-          <!-- <p class="event-time">Event time: {{event.eventDate.date}} {{event.eventDate.startTime}} to {{event.eventDate.endTime}}</p> -->
-          <!-- <p class="num-participants">Currently {{event.participants.length}} participants</p> -->
-          <p class="address">Address: 3616 South Road, Building D, Mukilteo, WA 98275</p>
-          <p class="event-time">Event time: Aug 1, 2018 7:30pm to 10:00pm</p>
-          <p class="num-participants">Currently 6 participants</p>
-        </div>
-      </div>
+<div class="card" *ngFor="let event of myEvents">
+  <div class="card-block">
+    <h4>
+      <a routerLink="/events/{{event._id}}">{{event.organizer}}'s Event</a>
+    </h4>
+    <p class="address">Address: {{event.address}}</p>
+    <p class="event-time">Event time: {{event.eventDate}}</p>
+    <p class="num-participants">Currently {{event.participants.length}} participant(s)</p>
+    <p class="event-intro" *ngIf="event.intro">Event intro: {{event.intro}}</p>
+  </div>
+</div>

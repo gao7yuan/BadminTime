@@ -1,67 +1,68 @@
 <div class="content page-content">
   <h4>
-    {{event.organizer.userName}}'s Event
+    {{event.organizer}}'s Event
   </h4>
   <p class="address">Address: {{event.address}}</p>
   <p class="event-time">Event time: {{event.eventDate}}</p>
-  <p class="num-participants">Currently {{event.participants.length}} participant(s)</p> 
+  <p class="num-participants">Currently {{event.participants.length}} participant(s)</p>
+  <p class="participants-name" *ngIf="auth.isLoggedIn()">{{event.participants}}</p>
+  <p class="event-intro" *ngIf="event.intro">Intro: {{event.intro}}</p>
 </div>
 <div class="content">
-  <div class="signup-button">
-    <button type="button" class="btn btn-primary float-right" (click)="signupFormVisible=true">
+  <div class="signup-button" *ngIf="!event.participants.includes(auth.getUserDetails()?.name)">
+    <button type="button" class="btn btn-primary float-right" (click)="onEditSubmit()">
       Sign up
     </button>
   </div>
-</div>
-<div class="card" *ngIf="signupFormVisible">
-  <div class="card-block">
-      <form class="create-event-form">
-          <div class="user-info">
-              <div class="form-group username-form">
-                  <label for="userName">Username</label>
-                  <input type="text" class="form-control" id="userName" placeholder="Username">
-                </div>
-                <div class="form-group email-form">
-                  <label for="inputEmail">Contact Email</label>
-                  <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
-                </div>
-          </div>
-              <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
-              <button type="cancel" class="btn btn-primary" id="cancel-btn" (click)="signupFormVisible=false">Cancel</button>
-        </form>
+  <div class="signup-button"
+       *ngIf="event.participants.includes(auth.getUserDetails()?.name) && auth.getUserDetails()?.name!==event.organizer">
+    <button type="button" class="btn btn-primary float-right" (click)="onEditSubmit()">
+      Quit
+    </button>
   </div>
-</div>
-<div class="create-event-button">
+
+<div class="create-event-button" *ngIf="auth.getUserDetails()?.name===event.organizer">
   <button type="button" class="btn btn-primary float-right" (click)="editFormVisible=true">
     Edit
   </button>
 </div>
 <div class="card" *ngIf="editFormVisible">
   <div class="card-block">
-      <form (ngSubmit)="onEditSubmit()" class="create-event-form">
-          <div *ngIf="formError" class="alert alert-danger" role="alert" [innerHtml]="formError">
-          </div>
-          <div class="event-time">
-              <div class="form-group date-form">
-                  <label for="date">Event Date</label>
-                  <input [(ngModel)]="newEvent.eventDate" name="date" type="text" class="form-control" id="date">
-                </div>
-          </div>
+    <form (ngSubmit)="onEditSubmit()" class="create-event-form">
+      <div class="event-time">
+        <div class="form-group date-form">
+          <label for="date">Event Date</label>
+          <input [(ngModel)]="newEvent.eventDate" name="date" type="text" class="form-control" id="date">
+        </div>
+      </div>
 
-          <div class="form-group address-form">
-            <label for="eventAddress">Event Address</label>
-            <textarea [(ngModel)]="newEvent.address" name="address" class="form-control" id="eventAddress" rows="3"></textarea>
-          </div>
+      <div class="form-group address-form">
+        <label for="address">Event Address</label>
+        <input [(ngModel)]="newEvent.address" name="address" type="text" class="form-control" id="address">
+      </div>
 
-              <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
-              <button type="cancel" class="btn btn-primary" id="cancel-btn" (click)="editFormVisible=false">Cancel</button>
-        </form>
+      <div class="form-group intro-form">
+        <label for="intro">Event Intro</label>
+        <textarea [(ngModel)]="newEvent.intro" name="intro" class="form-control" id="intro"
+                  rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
+      <button type="cancel" class="btn btn-primary" id="cancel-btn" (click)="editFormVisible=false">Cancel</button>
+    </form>
   </div>
 </div>
-<div class="create-event-button">
+<div class="delete-button" *ngIf="auth.getUserDetails()?.name===event.organizer">
   <button type="button" class="btn btn-primary float-right" (click)="onDelete()">
+    <div *ngIf="deleteError" class="alert-light" role="alert" [innerHtml]="deleteError"></div>
     Delete
   </button>
+</div>
+<div class="back-button">
+  <button type="button" class="btn btn-primary float-right" routerLink="/events">
+    Back
+  </button>
+</div>
 </div>
 
 
