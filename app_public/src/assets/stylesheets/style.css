@@ -261,3 +261,8 @@ button {
     margin-right: 8px;
     margin-bottom: 5px;
 }
+
+.edit-card {
+    max-width: 600px;
+    margin: auto;
+}

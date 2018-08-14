@@ -16,34 +16,33 @@
   </div>
 </div>
 <div class="btn-container">
-      <div class="signup-button edit-btn" *ngIf="!event.participants.includes(auth.getUserDetails()?.name)">
-          <button type="button" class="btn btn-primary float-right" (click)="onEditSubmit()">
-            Sign up
-          </button>
-        </div>
-        <div class="signup-button edit-btn"
-             *ngIf="event.participants.includes(auth.getUserDetails()?.name) && auth.getUserDetails()?.name!==event.organizer">
-          <button type="button" class="btn btn-primary float-right" (click)="onEditSubmit()">
-            Quit
-          </button>
-        </div>
-        <div class="edit-event-button edit-btn" *ngIf="auth.getUserDetails()?.name===event.organizer">
-          <button type="button" class="btn btn-primary float-right" (click)="editFormVisible=true">
-            Edit
-          </button>
-        </div>
-        <div class="delete-button edit-btn" *ngIf="auth.getUserDetails()?.name===event.organizer">
-          <button type="button" class="btn btn-primary float-right" (click)="onDelete()">
-            Delete
-          </button>
-        </div>
-        <div class="back-button edit-btn">
-          <button type="button" class="btn btn-primary float-right" routerLink="/events">
-            Back
-          </button>
+  <div class="signup-button edit-btn" *ngIf="!event.participants.includes(auth.getUserDetails()?.name)">
+    <button type="button" class="btn btn-primary float-right" (click)="onEditSubmit()">
+      Sign up
+    </button>
   </div>
-  
-  <div class="card" *ngIf="editFormVisible">
+  <div class="signup-button edit-btn" *ngIf="event.participants.includes(auth.getUserDetails()?.name) && auth.getUserDetails()?.name!==event.organizer">
+    <button type="button" class="btn btn-primary float-right" (click)="onEditSubmit()">
+      Quit
+    </button>
+  </div>
+    <div class="edit-event-button edit-btn" *ngIf="auth.getUserDetails()?.name===event.organizer">
+      <button type="button" class="btn btn-primary float-right" (click)="editFormVisible=true">
+        Edit
+      </button>
+    </div>
+    <div class="delete-button edit-btn" *ngIf="auth.getUserDetails()?.name===event.organizer">
+      <button type="button" class="btn btn-primary float-right" (click)="onDelete()">
+        Delete
+      </button>
+    </div>
+    <div class="back-button edit-btn">
+      <button type="button" class="btn btn-primary float-right" routerLink="/events">
+        Back
+      </button>
+    </div>
+</div>
+<div class="card edit-card" *ngIf="editFormVisible">
     <div class="card-block">
       <form (ngSubmit)="onEditSubmit()" class="create-event-form">
         <div class="event-time">
@@ -68,6 +67,5 @@
       </form>
     </div>
   </div>
-</div>
 
 
