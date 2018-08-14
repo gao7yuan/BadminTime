@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { BadmintimeDataService } from '../badmintime-data.service';
-import { AuthenticationService } from '../authentication.service';
-import { Event, EventPost } from '../event';
+import {Component, OnInit, Input} from '@angular/core';
+import {BadmintimeDataService} from '../badmintime-data.service';
+import {AuthenticationService} from '../authentication.service';
+import {Event, EventPost} from '../event';
 
 @Component({
   selector: 'app-event-list',
@@ -23,6 +23,7 @@ export class EventListComponent implements OnInit {
 
   formError: string;
   buttonError: string;
+  createSuccess: string;
 
   public newEvent: Event = {
     _id: '',
@@ -41,9 +42,9 @@ export class EventListComponent implements OnInit {
 
   public newEventButtonClick(): void {
     if (this.auth.isLoggedIn()) {
-      this.createFormVisible=true;
+      this.createFormVisible = true;
     } else {
-      this.buttonError="please login first to create new event";
+      this.buttonError = "please login first to create new event";
     }
 
   }
@@ -82,7 +83,8 @@ export class EventListComponent implements OnInit {
           this.events.unshift(event);
           this.resetAndHideCreateForm();
         })
-
+        .then(()=>{this.createSuccess = "Create success!";})
+        .then(()=>{setTimeout(()=>{this.createSuccess = ""}, 3000);})
     } else {
       this.formError = 'Please fill in all the required fields.';
     }
@@ -95,7 +97,7 @@ export class EventListComponent implements OnInit {
 
   ngOnInit() {
     this.getEventList();
-    
+
   }
 
 }

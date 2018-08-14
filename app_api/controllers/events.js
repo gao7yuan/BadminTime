@@ -82,16 +82,18 @@ const modifyEvent = function (req, res) {
             res.status(400)
                 .json(err);
           } else {
-
             // modify event by organizer: can change event time and/or intro
             if (userName === event.organizer) {
               if (req.body.eventDate) {
                 event.eventDate = req.body.eventDate;
               }
-              event.address = req.body.address;
-              event.intro = req.body.intro;
+              if (req.body.address) {
+                event.address = req.body.address;
+              }
+              if (req.body.intro) {
+                event.intro = req.body.intro;
+              }
             } else {
-
               // by participant: join or quit the event
               if (event.participants.indexOf(userName) === -1) {
                 event.participants.push(userName);

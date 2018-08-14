@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {Event, EventPost} from "../event";
 import {BadmintimeDataService} from "../badmintime-data.service";
 import {AuthenticationService} from '../authentication.service';
-import { Location } from '@angular/common';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-event-details',
@@ -56,13 +56,15 @@ export class EventDetailsComponent implements OnInit {
   }
 
   public onEditSubmit(): void {
-    if (this.auth.isLoggedIn()){
+    if (this.auth.isLoggedIn()) {
       this.badmintimeDataService.modifyEvent(this.renderEventToPost(this.newEvent), this.event._id)
         .then((event: Event) => {
           this.resetAndHideEditForm();
           this.router.navigateByUrl('events');
         })
-        .then(()=>{this.router.navigateByUrl(`/events/${this.event._id}`);})
+        .then(() => {
+          this.router.navigateByUrl(`/events/${this.event._id}`);
+        })
     } else {
       this.errorMsg = "Please login first!";
     }
