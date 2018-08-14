@@ -18,10 +18,20 @@ h1, h2, h3, h4, h5, h6 {
     color: #000000;
     font-weight: normal;
     font-size: 1.5rem;
+    display: inline-block;
 }
 
 a.nav-link {
     color: #000000;
+}
+
+.navbar-toggler {
+    display: inline-block;
+    width: 60px;
+}
+
+.navbar-toggler-icon {
+    margin: auto;
 }
 
 /* card, content, etc */
