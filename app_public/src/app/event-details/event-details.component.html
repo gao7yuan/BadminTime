@@ -1,42 +1,48 @@
 <div class="content page-content">
   <div *ngIf="errorMsg" class="alert alert-danger" role="alert" [innerHtml]="errorMsg"></div>
-  <h4>
-    {{event.organizer}}'s Event
-  </h4>
-  <p class="address">Address: {{event.address}}</p>
-  <p class="event-time">Event time: {{event.eventDate}}</p>
-  <p class="num-participants">Currently {{event.participants.length}} participant(s)</p>
-  <p class="participants-name" *ngIf="auth.isLoggedIn()">{{event.participants}}</p>
-  <p class="event-intro" *ngIf="event.intro">Intro: {{event.intro}}</p>
+  <div class="card event-detail-block">
+    <div class="card-block">
+      <h4 class="event-title">
+        {{event.organizer}}'s Event
+      </h4>
+      <div class="event-content">
+        <p class="address">Address: {{event.address}}</p>
+        <p class="event-time">Event time: {{event.eventDate}}</p>
+        <p class="num-participants">Currently {{event.participants.length}} participant(s)</p>
+        <p class="participants-name" *ngIf="auth.isLoggedIn()">{{event.participants}}</p>
+        <p class="event-intro" *ngIf="event.intro">Intro: {{event.intro}}</p>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="content">
-  <div class="signup-button edit-btn" *ngIf="!event.participants.includes(auth.getUserDetails()?.name)">
-    <button type="button" class="btn btn-primary float-right" (click)="onEditSubmit()">
-      Sign up
-    </button>
+<div class="btn-container">
+      <div class="signup-button edit-btn" *ngIf="!event.participants.includes(auth.getUserDetails()?.name)">
+          <button type="button" class="btn btn-primary float-right" (click)="onEditSubmit()">
+            Sign up
+          </button>
+        </div>
+        <div class="signup-button edit-btn"
+             *ngIf="event.participants.includes(auth.getUserDetails()?.name) && auth.getUserDetails()?.name!==event.organizer">
+          <button type="button" class="btn btn-primary float-right" (click)="onEditSubmit()">
+            Quit
+          </button>
+        </div>
+        <div class="edit-event-button edit-btn" *ngIf="auth.getUserDetails()?.name===event.organizer">
+          <button type="button" class="btn btn-primary float-right" (click)="editFormVisible=true">
+            Edit
+          </button>
+        </div>
+        <div class="delete-button edit-btn" *ngIf="auth.getUserDetails()?.name===event.organizer">
+          <button type="button" class="btn btn-primary float-right" (click)="onDelete()">
+            Delete
+          </button>
+        </div>
+        <div class="back-button edit-btn">
+          <button type="button" class="btn btn-primary float-right" routerLink="/events">
+            Back
+          </button>
   </div>
-  <div class="signup-button edit-btn"
-       *ngIf="event.participants.includes(auth.getUserDetails()?.name) && auth.getUserDetails()?.name!==event.organizer">
-    <button type="button" class="btn btn-primary float-right" (click)="onEditSubmit()">
-      Quit
-    </button>
-  </div>
-
-  <div class="edit-event-button edit-btn" *ngIf="auth.getUserDetails()?.name===event.organizer">
-    <button type="button" class="btn btn-primary float-right" (click)="editFormVisible=true">
-      Edit
-    </button>
-  </div>
-  <div class="delete-button edit-btn" *ngIf="auth.getUserDetails()?.name===event.organizer">
-    <button type="button" class="btn btn-primary float-right" (click)="onDelete()">
-      Delete
-    </button>
-  </div>
-  <div class="back-button edit-btn">
-    <button type="button" class="btn btn-primary float-right" routerLink="/events">
-      Back
-    </button>
-  </div>
+  
   <div class="card" *ngIf="editFormVisible">
     <div class="card-block">
       <form (ngSubmit)="onEditSubmit()" class="create-event-form">
@@ -57,7 +63,6 @@
           <textarea [(ngModel)]="newEvent.intro" name="intro" class="form-control" id="intro"
                   rows="3"></textarea>
         </div>
-
         <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
         <button type="cancel" class="btn btn-primary" id="cancel-btn" (click)="editFormVisible=false">Cancel</button>
       </form>

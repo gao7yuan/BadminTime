@@ -14,10 +14,7 @@
       <div *ngIf="formError" class="alert alert-danger" role="alert" [innerHtml]="formError">
       </div>
       <div class="user-info">
-        <div class="form-group username-form">
-          <label>Username</label>
-          <label>{{ auth.getUserDetails()?.name }}</label>
-        </div>
+          <p class="user-info">Username: {{ auth.getUserDetails()?.name }}</p>
       </div>
       <div class="event-time">
         <div class="form-group date-form">
@@ -47,12 +44,14 @@
 <div class="card" *ngFor="let event of events">
   <div class="card-block">
     <h4>
-      <a routerLink="/events/{{event._id}}">{{event.organizer}}'s Event</a>
+      <a routerLink="/events/{{event._id}}" class="event-title">{{event.organizer}}'s Event</a>
     </h4>
-    <p class="address">Address: {{event.address}}</p>
-    <p class="event-time">Event time: {{event.eventDate}}</p>
-    <p class="num-participants">Currently {{event.participants.length}} participant(s)</p>
-    <p class="event-intro" *ngIf="event.intro">Event intro: {{event.intro}}</p>
+    <div class="event-content">
+      <p class="address">Address: {{event.address}}</p>
+      <p class="event-time">Event time: {{event.eventDate}}</p>
+      <p class="num-participants">Currently {{event.participants.length}} participant(s)</p>
+      <p class="event-intro" *ngIf="event.intro">Event intro: {{event.intro}}</p>
+    </div>
   </div>
 </div>
 

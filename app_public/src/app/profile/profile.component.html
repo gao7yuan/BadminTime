@@ -1,12 +1,8 @@
 <div class="container user-container">
-  <div class="form-horizontal">
-    <div class="form-group">
-      <label class="col-sm-3 control-label">Full name</label>
-      <p class="form-control-static">{{ details?.name }}</p>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-3 control-label">Email</label>
-      <p class="form-control-static">{{ details?.email }}</p>
+  <div class="card event-detail-block">
+    <div class="card-block">
+      <p class="user-info-small">Username: {{ details?.name }}</p>
+      <p class="user-info-small">Contact email: {{ details?.email }}</p>
     </div>
   </div>
 </div>

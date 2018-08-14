@@ -1,7 +1,7 @@
 <div class="card" *ngFor="let event of myEvents">
   <div class="card-block">
     <h4>
-      <a routerLink="/events/{{event._id}}">{{event.organizer}}'s Event</a>
+      <a routerLink="/events/{{event._id}}" class="event-title">{{event.organizer}}'s Event</a>
     </h4>
     <p class="address">Address: {{event.address}}</p>
     <p class="event-time">Event time: {{event.eventDate}}</p>
