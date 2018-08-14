@@ -59,7 +59,7 @@ h4 a, h4 a:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    background-image: url('../../assets/images/badminton_wall.jpeg');
+    background-image: url('../../assets/images/badminton1.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -74,7 +74,7 @@ h4 a, h4 a:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    background-image: url('../../assets/images/badminton1.jpg');
+    background-image: url('../../assets/images/badminton2.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -89,7 +89,7 @@ h4 a, h4 a:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    background-image: url('../../assets/images/badminton2.jpg');
+    background-image: url('../../assets/images/badminton5.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -256,7 +256,8 @@ button {
     align-items: center;
 }
 
-.logo-img {
-    position: relative;
-    z-index: 0;
+.logo {
+    margin-top: 1px;
+    margin-right: 8px;
+    margin-bottom: 5px;
 }
