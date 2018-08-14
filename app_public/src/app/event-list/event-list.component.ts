@@ -1,7 +1,7 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {BadmintimeDataService} from '../badmintime-data.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { BadmintimeDataService } from '../badmintime-data.service';
 import { AuthenticationService } from '../authentication.service';
-import {Event, EventPost} from '../event';
+import { Event, EventPost } from '../event';
 
 @Component({
   selector: 'app-event-list',
@@ -13,8 +13,7 @@ export class EventListComponent implements OnInit {
 
   @Input() event: Event;
 
-  constructor(private badmintimeDataService: BadmintimeDataService,
-              public auth: AuthenticationService) {
+  constructor(private badmintimeDataService: BadmintimeDataService, public auth: AuthenticationService) {
   }
 
   public createFormVisible: boolean = false;
@@ -96,6 +95,7 @@ export class EventListComponent implements OnInit {
 
   ngOnInit() {
     this.getEventList();
+    
   }
 
 }

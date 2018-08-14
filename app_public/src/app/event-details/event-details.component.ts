@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {Event, EventPost} from "../event";
 import {BadmintimeDataService} from "../badmintime-data.service";
 import {AuthenticationService} from '../authentication.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-event-details',
@@ -15,7 +16,7 @@ export class EventDetailsComponent implements OnInit {
   @Input() event: Event;
 
   constructor(private badmintimeDataService: BadmintimeDataService,
-              public auth: AuthenticationService, private router: Router) {
+              public auth: AuthenticationService, private router: Router, private location: Location) {
   }
 
   public editFormVisible: boolean = false;
@@ -76,6 +77,10 @@ export class EventDetailsComponent implements OnInit {
       this.errorMsg = "Delete error!";
     })
 
+  }
+
+  public backClicked(): void {
+    this.location.back();
   }
 
   ngOnInit() {
