@@ -11,7 +11,7 @@ export class BadmintimeDataService {
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
 
   //private apiBaseUrl = 'http://localhost:3000/api';
-  private apiBaseUrl = 'https:loc8r-yuangao.herokuapp.com/api';
+  private apiBaseUrl = 'https://fathomless-fortress-10633.herokuapp.com';
 
   public getEventList(): Promise<Event[]> {
     const url: string = `${this.apiBaseUrl}/events`;
