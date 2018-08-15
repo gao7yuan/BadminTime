@@ -56,9 +56,9 @@ export class AuthenticationService {
                   user?: TokenPayload): Observable<any> {
     let base;
     if (method === 'post') {
-      base = this.http.post(`http://localhost:3000/api/${type}`, user);
+      base = this.http.post(`https://badmintime.herokuapp.com/api/'+${type}`, user);
     } else {
-      base = this.http.get(`http://localhost:3000/api/${type}`,
+      base = this.http.get(`https://badmintime.herokuapp.com/api/'+${type}`,
         { headers: { Authorization: `Bearer ${this.getToken()}` }});
     }
 
