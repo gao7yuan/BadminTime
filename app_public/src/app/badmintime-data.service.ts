@@ -10,8 +10,8 @@ export class BadmintimeDataService {
 
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
 
-  private apiBaseUrl = 'http://localhost:3000/api';
-  //private apiBaseUrl = 'https://badmintime.herokuapp.com/api';
+  // private apiBaseUrl = 'http://localhost:3000/api';
+  private apiBaseUrl = 'https://badmintime.herokuapp.com/api';
 
   public getEventList(): Promise<Event[]> {
     const url: string = `${this.apiBaseUrl}/events`;
