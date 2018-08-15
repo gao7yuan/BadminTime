@@ -1,7 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {NgModule, ApplicationRef} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {AgmCoreModule} from '@agm/core';
 import {HttpModule} from '@angular/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {AppComponent} from './app.component';
@@ -22,6 +24,7 @@ import {ProfileComponent} from './profile/profile.component';
 import {AuthenticationService} from "./authentication.service";
 import {AuthguardService} from "./authguard.service";
 import {BadmintimeDataService} from "./badmintime-data.service";
+import { MapComponent } from './map/map.component';
 
 
 @NgModule({
@@ -40,14 +43,21 @@ import {BadmintimeDataService} from "./badmintime-data.service";
     RegisterPageComponent,
     MyEventsPageComponent,
     MyEventsComponent,
-    ProfileComponent
+    ProfileComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpModule,
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCtQfWd7o7LF4VAFDNYTGCNU3n-zJhFGhU',
+      libraries: ["places"]
+    })
   ],
   providers: [HttpClientModule, AuthenticationService,
     AuthguardService, BadmintimeDataService],
