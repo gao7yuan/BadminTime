@@ -100,7 +100,7 @@ h4 a, h4 a:hover {
 /* content layout */
 
 .user-container {
-    margin-top: 85px;
+    margin: 20px;
 }
 
 .page-container {
@@ -270,4 +270,5 @@ button {
 /* map */
 .map-container {
     max-width: 400px;
+    margin-bottom: 50px;
 }
