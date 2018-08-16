@@ -1,14 +1,14 @@
 # FDU Project: BadminTime
 
-- BadminTime: The right place to enjoy badminton at your free time!
+- BadminTime: Enjoy badminton at the right place and right time with the right people at BADMINTIME!
 - This application is deployed on Heroku: link [here](https://badmintime.herokuapp.com/).
 
 ## Links to each iteration
 - [Introduction](#introduction)
 - [App Details](#application-details)
-- [Iteration 3.0](#iteration-3.0)
-- [Iteration 2.0](#iteration-2.0)
-- [Iteration 1.0](#iteration-1.0)
+- [Iteration 3.0](#iteration-3)
+- [Iteration 2.0](#iteration-2)
+- [Iteration 1.0](#iteration-1)
 
 ## Introduction
 Jeffrey and Yuan are both badminton lovers. They play badminton every Wednesday with several friends together near Mukilteo, WA. Sometimes they find it difficult to find out who is participating the coming event from messages in the group chat, since their friends might fail to see the message, not reply in time, or that the group chat is flooded with other unrelated chitchats.
@@ -51,7 +51,7 @@ For this project, they are trying to build a website to help people create and s
 ![final](/app_log_images/final/profile.png)
 * You will now be able to create a new event:
 ![final](/app_log_images/final/new_event_loggedin.png)
-* If you view the event that you created, you will be able to edti it, delete it, or go back to the previous page:
+* If you view the event that you created, you will be able to edit it, delete it, or go back to the previous page:
 ![final](/app_log_images/final/event_detail_my.png)
 ![final](/app_log_images/final/edit_event.png)
 
