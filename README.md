@@ -92,7 +92,10 @@ For this project, they are trying to build a website to help people create and s
   - used schema to model the data, push database live on mlab
   - defined and organized routes in Express
   - finished methods in the controllers, handling potential requests and sending responses
-* Took appreciation of Yuan's front-end work  
+* Took appreciation of Yuan's front-end work
+
+### Decision on 3rd-party api:
+* Angular google map & Google Maps JavaScript API.
 
 ![iter1](/app_log_images/iter1-home.png)
 ![iter1](/app_log_images/iter1-explore.png)
