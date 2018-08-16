@@ -55,13 +55,13 @@ For this project, they are trying to build a website to help people create and s
 ![final](/app_log_images/final/event_detail_my.png)
 ![final](/app_log_images/final/edit_event.png)
 
-## Iteration 3.0
+## Iteration 3
 * Enabled Angular to talk to database API in Express to execute GET, PUT, POST, DELETE methods.
 * Improved login feature in Express and made Angular talk to the api in Express.
 * Added third-party element: Angular google map & Google Maps JavaScript API to enable google map in events with autocomplete search box.
 * Updated UI.
 
-## Iteration 2.0
+## Iteration 2
 ### Angular:
 * Added create-event form in events component and signup form in event-details component.
 * Enabled change of visibility of these forms by clicking corresponding buttons.
@@ -75,7 +75,7 @@ For this project, they are trying to build a website to help people create and s
 ![iter2](/app_log_images/iter2-createeventform.png)
 ![iter2](/app_log_images/iter2-signupform.png)
 
-## Iteration 1.0
+## Iteration 1
 ### Angular:
 * Created necessary Angular components
 * Built static webpages.
