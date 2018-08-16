@@ -56,10 +56,11 @@ For this project, they are trying to build a website to help people create and s
 ![final](/app_log_images/final/edit_event.png)
 
 ## Iteration 3
-* Enabled Angular to talk to database API in Express to execute GET, PUT, POST, DELETE methods.
+* Fully enabled Angular to talk to database API in Express to execute GET, PUT, POST, DELETE methods.
 * Improved login feature in Express and made Angular talk to the api in Express.
 * Added third-party element: Angular google map & Google Maps JavaScript API to enable google map in events with autocomplete search box.
 * Updated UI.
+* Updates are shown in Application Details
 
 ## Iteration 2
 ### Angular:
