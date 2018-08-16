@@ -266,3 +266,8 @@ button {
     max-width: 600px;
     margin: auto;
 }
+
+/* map */
+.map-container {
+    max-width: 400px;
+}

@@ -100,7 +100,7 @@ h4 a, h4 a:hover {
 /* content layout */
 
 .user-container {
-    margin-top: 85px;
+    margin: 20px;
 }
 
 .page-container {
@@ -265,4 +265,10 @@ button {
 .edit-card {
     max-width: 600px;
     margin: auto;
+}
+
+/* map */
+.map-container {
+    max-width: 400px;
+    margin-bottom: 50px;
 }

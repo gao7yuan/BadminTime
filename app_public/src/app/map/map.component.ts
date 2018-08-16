@@ -44,7 +44,7 @@ export class MapComponent implements OnInit {
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["address"]
+        types: []
       });
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {

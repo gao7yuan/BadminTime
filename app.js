@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'app_public', 'build')));
 
 app.use('/api', function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'https://badmintime.herokuapp.com/api/');
+  res.header('Access-Control-Allow-Origin', 'https://badmintime.herokuapp.com');
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   next();
