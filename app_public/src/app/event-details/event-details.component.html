@@ -9,7 +9,7 @@
         <p class="address">Address: {{event.address}}</p>
         <p class="event-time">Event time: {{event.eventDate}}</p>
         <p class="num-participants">Currently {{event.participants.length}} participant(s)</p>
-        <p class="participants-name" *ngIf="auth.isLoggedIn()">{{event.participants}}</p>
+        <p class="participants-name" *ngIf="auth.isLoggedIn()">Participant(s): {{event.participants}}</p>
         <p class="event-intro" *ngIf="event.intro">Intro: {{event.intro}}</p>
       </div>
     </div>
