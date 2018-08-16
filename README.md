@@ -71,9 +71,14 @@ For this project, they are trying to build a website to help people create and s
 * Add authentication (register, login) to API
 * Fix API bugs
 
-![iter2](/app_log_images/iter2-neweventbtn.png)
-![iter2](/app_log_images/iter2-createeventform.png)
-![iter2](/app_log_images/iter2-signupform.png)
+* GET EventList
+![iter2](/app_log_images/final/event_list.png)
+* POST Event
+![iter2](/app_log_images/final/new_event_loggedin.png)
+* PUT (edit) and DELETE Event
+![iter2](/app_log_images/final/edit_event.png)
+* PUT Event (sign up)
+![iter2](/app_log_images/final/event_detail_other.png)
 
 ## Iteration 1
 ### Angular:
@@ -102,3 +107,6 @@ For this project, they are trying to build a website to help people create and s
 ![iter1](/app_log_images/iter1-eventdetail.png)
 ![iter1](/app_log_images/iter1-login.png)
 ![iter1](/app_log_images/iter1-register.png)
+![iter1](/app_log_images/iter2-neweventbtn.png)
+![iter1](/app_log_images/iter2-createeventform.png)
+![iter1](/app_log_images/iter2-signupform.png)
