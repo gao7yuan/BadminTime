@@ -1,4 +1,5 @@
 # FDU Project: BadminTime
+## Final Project for CS5610 Web Development in Northeastern University
 
 - BadminTime: Enjoy badminton at the right place and right time with the right people at BADMINTIME!
 - This application is deployed on Heroku: link [here](https://badmintime.herokuapp.com/).
